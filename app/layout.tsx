@@ -4,6 +4,10 @@ import Script from 'next/script'
 import { MobileWall } from '@/components/mobile-wall'
 import './globals.css'
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://nodepad.space'
+const siteOrigin = new URL(siteUrl).origin
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || ''
+
 const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 const vazirmatn = Vazirmatn({
@@ -13,17 +17,18 @@ const vazirmatn = Vazirmatn({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteOrigin),
   title: 'nodepad',
   description: 'A spatial research tool where AI augments your thinking — not replaces it.',
   icons: {
-    icon: [{ url: '/icon.svg', type: 'image/svg+xml' }],
-    apple: '/apple-icon.png',
+    icon: [{ url: `${basePath}/icon.svg`, type: 'image/svg+xml' }],
   },
   openGraph: {
     title: 'nodepad',
     description: 'A spatial research tool where AI augments your thinking — not replaces it.',
-    url: 'https://nodepad.space',
+    url: siteUrl,
     siteName: 'nodepad',
+    images: [{ url: `${basePath}/nodepad.jpg`, width: 1200, height: 630, alt: 'nodepad' }],
     locale: 'en_US',
     type: 'website',
   },
@@ -31,6 +36,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'nodepad',
     description: 'A spatial research tool where AI augments your thinking — not replaces it.',
+    images: [`${basePath}/nodepad.jpg`],
   },
 }
 

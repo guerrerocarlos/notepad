@@ -229,7 +229,7 @@ export function getProviderHeaders(config: AIConfig): Record<string, string> {
     "Authorization": `Bearer ${config.apiKey}`,
   }
   if (config.provider === "openrouter") {
-    base["HTTP-Referer"] = "https://nodepad.space"
+    base["HTTP-Referer"] = process.env.NEXT_PUBLIC_SITE_URL || "https://nodepad.space"
     base["X-Title"] = "nodepad"
   }
   return base

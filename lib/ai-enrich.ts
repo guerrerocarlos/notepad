@@ -3,6 +3,7 @@
 import { detectContentType } from "@/lib/detect-content-type"
 import { loadAIConfig, getBaseUrl, getProviderHeaders, getModelsForProvider } from "@/lib/ai-settings"
 import type { ContentType } from "@/lib/content-types"
+import { withBasePath } from "@/lib/base-path"
 
 // ── Language detection ────────────────────────────────────────────────────────
 
@@ -116,7 +117,7 @@ type UrlMeta = { title: string; description: string; excerpt: string; statusCode
 
 async function fetchUrlMetaViaServer(url: string): Promise<UrlMeta | null> {
   try {
-    const res = await fetch("/api/fetch-url", {
+    const res = await fetch(withBasePath("/api/fetch-url"), {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ url }),

@@ -29,8 +29,8 @@ Three views: **tiling** (spatial BSP grid), **kanban** (grouped by type), **grap
 **Requirements**: a desktop browser and an API key from one of the supported providers.
 
 ```bash
-git clone https://github.com/mskayyali/nodepad.git
-cd nodepad
+git clone https://github.com/guerrerocarlos/notepad.git
+cd notepad
 npm install
 npm run dev
 ```
@@ -106,6 +106,12 @@ Everything lives in your browser. No account, no server, no database.
 ## Tech
 
 Next.js · React 19 · TypeScript · Tailwind CSS v4 · D3.js · Framer Motion
+
+## W7S deployment
+
+This repo deploys to `https://guerrerocarlos.w7s.cloud/notepad/` with GitHub Actions and `w7s-io/w7s-cloud@v1`.
+
+The workflow installs dependencies, builds the static Next frontend with `NEXT_PUBLIC_BASE_PATH=/notepad`, and deploys the generated `out/` directory plus the small `backend/index.ts` Worker that serves `/api/fetch-url`.
 
 ---
 

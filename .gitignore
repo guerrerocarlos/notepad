@@ -9,6 +9,7 @@ app/design-system/
 # Common ignores
 node_modules/
 .next/
+out/
 .env*.local
 .DS_Store
 .claude/
